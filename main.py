@@ -99,6 +99,7 @@ def transform_file(input_path, output_path, headers=None, verbose=False):
                 'Type':   t,
             })
             tmp = tmp[tmp['nsafe'].notna() & tmp['height'].notna()]
+            tmp = tmp[tmp['nsafe'] != 0]  # исключаем ячейки со значением 0
             if tmp.empty:
                 continue
             tmp['nsafe'] = tmp['nsafe'].astype(int)
